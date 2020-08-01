@@ -19,11 +19,7 @@ for tr in trs:
     artist = tr.select_one('td.info > a.albumtitle.ellipsis').text
     print(rank, title, artist)
 
-    doc = {
-        'rank' : rank,
-        'title' : title,
-        'artist' : artist,
+    db.music.insert_one({'rank': rank})
+    db.music.insert_one({'title' : title})
+    db.music.insert_one({'artist' : artist})
 
-    }
-
-    db.music.insert_one(doc)
